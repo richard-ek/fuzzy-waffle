@@ -46,12 +46,12 @@ canvas {
   <body style="text-align: center">
   
     <canvas id="unity-canvas"></canvas>
-    <script src="Build/Makeitpop.app-GitHub-Pages.loader.js"></script>
+    <script src="Build/Makeitpop.loader.js"></script>
     <script>
       var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Makeitpop.app-GitHub-Pages.data.unityweb",
-        frameworkUrl: "Build/Makeitpop.app-GitHub-Pages.framework.js.unityweb",
-        codeUrl: "Build/Makeitpop.app-GitHub-Pages.wasm.unityweb",
+        dataUrl: "Build/Makeitpop.data",
+        frameworkUrl: "Build/Makeitpop.framework.js",
+        codeUrl: "Build/Makeitpop.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Makeitpop.app - Unity",
