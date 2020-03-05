@@ -16,11 +16,9 @@
 	  unityInstance.then(a => a.SendMessage("AppManager", "ImportImage", data.dataURL))
 	}).on('pasteImageError', function(ev, data){
 	  alert('Oops: ' + data.message);
-	  if(data.url){
-		alert('But we got its url anyway:' + data.url)
-	  }
+	  <!--if(data.url){alert('But we got its url anyway:' + data.url)}-->
 	}).on('pasteText', function (ev, data){
-	  alert("Paste error: " + data.text);
+	  alert("No image was pasted");
 	});
 	});
 	</script>
@@ -48,12 +46,12 @@ canvas {
   <body style="text-align: center">
   
     <canvas id="unity-canvas"></canvas>
-    <script src="Build/Makeitpop.loader.js"></script>
+    <script src="Build/Makeitpop.app-GitHub-Pages.loader.js"></script>
     <script>
       var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Makeitpop.data.br",
-        frameworkUrl: "Build/Makeitpop.framework.js.br",
-        codeUrl: "Build/Makeitpop.wasm.br",
+        dataUrl: "Build/Makeitpop.app-GitHub-Pages.data.unityweb",
+        frameworkUrl: "Build/Makeitpop.app-GitHub-Pages.framework.js.unityweb",
+        codeUrl: "Build/Makeitpop.app-GitHub-Pages.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Makeitpop.app - Unity",
