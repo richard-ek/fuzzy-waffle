@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+	<script type="text/javascript" src="paste.js"></script>
+	<script type="text/javascript">
+	$(function(){
+	$('body').pastableNonInputable();
+		$('body').on('pasteImage', function (ev, data){
+	  console.log("dataURL: " + data.dataURL);
+	  console.log("width: " + data.width);
+	  console.log("height: " + data.height);
+	  console.log(data.blob);
+	  unityInstance.then(a => a.SendMessage("AppManager", "ImportImage", data.dataURL))
+	}).on('pasteImageError', function(ev, data){
+	  alert('Oops: ' + data.message);
+	  if(data.url){
+		alert('But we got its url anyway:' + data.url)
+	  }
+	}).on('pasteText', function (ev, data){
+	  alert("Paste error: " + data.text);
+	});
+	});
+	</script>
+    <title>Unity WebGL Player | Makeitpop.app - Unity</title>
+		<style>
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+  position: relative;
+  background: black;
+  height: 100%;
+  width: 100%;
+}
+</style>
+  </head>
+  <body style="text-align: center">
+  
+    <canvas id="unity-canvas"></canvas>
+    <script src="Build/Makeitpop.loader.js"></script>
+    <script>
+      var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/Makeitpop.data.br",
+        frameworkUrl: "Build/Makeitpop.framework.js.br",
+        codeUrl: "Build/Makeitpop.wasm.br",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Makeitpop.app - Unity",
+        productVersion: "1.0",
+      });
+    </script>
+  </body>
+</html>
